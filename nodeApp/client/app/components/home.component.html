@@ -1,0 +1,46 @@
+<div class="list-group">
+  <!-- <ul>
+      <li class="list-group-item" *ngFor="let p of posts">
+          <display-post [post]="p"></display-post>
+      </li>
+  </ul> -->
+  <topNavBar></topNavBar>
+  <div *ngIf="!isLoggedIn" class="alert alert-warning" role="alert">
+      <strong>Login!</strong> Please login to view user list.
+  </div>
+  <table class="table" *ngIf="isLoggedIn">
+      <thead>
+        <tr>
+          <th scope="col" (click)="onClickUser()">USER
+              <!--<span class="glyphicon glyphicon-chevron-down"></span>
+              <span class="glyphicon glyphicon-chevron-right"></span> -->
+          </th>
+          <th scope="col" (click)="onClickEmail()">EMAIL
+               <!--!<span *ngIf="sortAuthor" class="glyphicon glyphicon-chevron-down"></span>
+              <span *ngIf="!sortAuthor" class="glyphicon glyphicon-chevron-right"></span> -->
+          </th>
+          <th scope="col">ADDRESS</th>
+          <th scope="col">ROLE</th>
+          <th scope="col">DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users">
+            <td class="post-td">
+                <button type="button" class="btn btn-link" (click)="onClickUser(u)">{{u.name}}</button>
+            </td>
+            <td>{{u.email || 'User'}}</td>
+            <td>{{u.address}}</td>
+            <td>{{u.role}}</td>
+            <td>{{u.createdAt | date: 'dd/MM/yyyy'}}</td>
+            <td *ngIf="isAdmin">
+                <button *ngIf="u.role === 'Admin'" type="button" class="btn btn-secondary" (click)="changeRole(u)">Demote</button>
+                <button *ngIf="u.role === 'Contributor'" type="button" class="btn btn-secondary" (click)="changeRole(u)">Promte</button>
+            </td>
+            <td>
+                <button *ngIf="isAdmin" type="button" class="btn btn-link" (click)="removeUser(u)">Remove</button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

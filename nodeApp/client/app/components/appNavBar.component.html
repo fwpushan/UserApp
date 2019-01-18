@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="nav navbar-nav navbar-">
+            <div>
+                <h5 class="row">User Portal</h5>
+                <h6 class="row">{{subTitle}}</h6>
+            </div>
+
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <!-- <button *ngIf="isLogin" type="button" class="btn btn-secondary btn-sm" (click)="createPost()">Post</button> -->
+            <a *ngIf="!isLogin" [routerLink]="['/login']" class="btn btn-link">Login</a>
+            <button *ngIf="isLogin" type="button" class="btn btn-secondary btn-sm" (click)="logout()">Logout</button>
+        </div>
+    </div>
+</nav>
